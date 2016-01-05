@@ -1,7 +1,8 @@
 import postgres_stats
 import launcher
+import creds
 
-cur, conn = postgres_stats.make_connection(database='prod_b_registry', user='', password='', host='pg1.gbif.org')
+cur, conn = postgres_stats.make_connection(database='prod_b_registry', user=creds.postgres_user, password=creds.postgrespw, host='pg1.gbif.org')
 
 
 def pg_stats(start, end, csv_file, sql=None):

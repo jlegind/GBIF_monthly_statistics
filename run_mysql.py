@@ -1,7 +1,8 @@
 import mysql_stats as my
 import launcher
+import creds
 
-cur, conn = my.make_connection(database='drupal_live', user='', password='', host='camelot.gbif.org')
+cur, conn = my.make_connection(database='drupal_live', user=creds.mysql_user, password=creds.mysqlpw, host='camelot.gbif.org')
 print type(cur)
 print type(conn)
 
