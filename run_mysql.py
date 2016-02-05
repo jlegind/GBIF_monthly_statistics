@@ -17,9 +17,5 @@ def my_stats(csv_file):
     "LEFT JOIN field_data_field_iso2 ON field_data_field_iso2.entity_id = taxonomy_term_data.tid WHERE users.login <> 0) AS t1" )
 
     launcher.launch(sql, cur, csv_file, conn, statfunc=my)
-# for j in my.run_query(sql, cur, conn):
-#     print '\t'.join(map(str, j))
-#     # for k in j:
-#     #     print k
-#     # print j[0], type(j)
+
 

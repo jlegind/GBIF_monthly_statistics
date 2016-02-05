@@ -17,10 +17,4 @@ def pg_stats(start, end, csv_file, sql=None):
                         "select count(distinct d.key) from occurrence_download d where date(d.created) BETWEEN %(start)s AND %(end)s and d.status = 'SUCCEEDED' AND d.notification_addresses NOT LIKE '%%@gbif.org' AND created_by != 'nagios' "),
                        {'start':start, 'end':end})
 
-        launcher.launch(sql, cur, csv_file, conn, statfunc=postgres_stats)
-
-#
-# for j in postgres_stats.run_query(sql, cur, conn):
-#     #print j[0], type(j)
-#     print '\t'.join(map(str,j))
-
+        return launcher.launch(sql, cur, csv_file, conn, statfunc=postgres_stats)
