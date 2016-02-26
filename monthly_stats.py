@@ -1,6 +1,5 @@
 import run_postgres, run_hive, run_mysql, csv
 import merge_csvs as mcsv
-#import pandas_test as pt
 
 
 start_date = '2016-01-01'
@@ -11,7 +10,6 @@ headers = []
 ##The total downloads stats part
 pg_csv = "/home/jan/Documents/test_postgres.csv"
 runner = run_postgres.pg_stats(start_date, end_date, pg_csv)
-print runner, "----------------list-------------"
 f = open(runner, "r+")
 rows = []
 labels = ['Total downloaded records', 'users', 'downloads']
@@ -19,14 +17,12 @@ headers.append(['Overall download stats\n %s to %s' % (start_date, end_date),'Co
 #Assigns row labels
 labels.reverse()
 for row in csv.reader(f):
-    #print row
     rows.append([labels.pop()+"\t"+row[0]])
 f = open(runner, "w+")
 w = csv.writer(f)
 w.writerows(rows)
 f.close()
 csv_list.append(runner)
-#print csv_list
 ##END
 
 ##Begin User Download for MySQL and Postgres
@@ -54,9 +50,8 @@ runner = run_postgres.pg_stats(start_date, end_date, my_csv, sql=sql)
 csv_list.append(runner)
 ##END
 
-
+##Begin indexed records stats from HIVE
 hive_csv = "/home/jan/Documents/test_hive%s.csv"
-
 runner = run_hive.hive_stats(start_date, end_date, hive_csv)
 [csv_list.append(j) for j in runner]
 headers.append(['Indexed record_count\nfrom %s to %s' % (start_date, end_date), 'country'])
@@ -66,4 +61,3 @@ print csv_list
 print headers
 
 mcsv.into_csv(csv_list, headers)
-#pt.into_csv(csv_list, headers)
