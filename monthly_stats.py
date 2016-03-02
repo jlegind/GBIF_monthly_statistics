@@ -1,9 +1,10 @@
 import run_postgres, run_hive, run_mysql, csv
 import merge_csvs as mcsv
+import sys
 
 
-start_date = '2016-01-01'
-end_date = '2016-01-31'
+start_date = sys.argv[1]
+end_date = sys.argv[2]
 csv_list = []
 headers = []
 
