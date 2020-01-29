@@ -24,7 +24,7 @@ def into_csv(files, column_header):
     #Converts floats to objects, because of scientific formatting suppression of large numbers
     myfile = '/home/jan/Documents/pre-final.csv'
     merger.to_csv(myfile, sep='\t', index=False)
-    print merger
+    print(merger)
     ipt = fi.input(myfile, backup='.bak')
     writer = open(myfile.replace("pre-", ""), 'w')
     #Removes .0 from count integers that were forced into float
