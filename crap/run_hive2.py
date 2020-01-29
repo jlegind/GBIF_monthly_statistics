@@ -1,9 +1,9 @@
 """Runs the hive_stats module and launcher with the hardcoded SQL
 Creds contain the credential for the DB connection"""
 import hive_stats
-import launcher
-import creds
 
+import creds
+import launcher
 
 cur, conn = [None,None]
 

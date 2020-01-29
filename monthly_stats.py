@@ -1,7 +1,10 @@
-import run_postgres, run_hive, run_mysql, csv
-import merge_csvs as mcsv
 import sys
 
+import csv
+import run_hive
+import run_mysql
+import run_postgres
+from crap import merge_csvs as mcsv
 
 start_date = sys.argv[1]
 end_date = sys.argv[2]

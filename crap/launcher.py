@@ -1,7 +1,7 @@
 """The launch module fires off the query prepared in the run_nnnn modules
 and writes to csv file. Uses run_query() from the *_stats modules"""
 # import hive_stats, postgres_stats, mysql_stats
-import  postgres_stats
+import postgres_stats
 import csv
 import creds
 
