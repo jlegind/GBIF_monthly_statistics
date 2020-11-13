@@ -52,12 +52,8 @@ def run_query(sql, db_name, user, pw):
     return cursor.fetchall()
 
 
-# hive = make_connection("\t", 'c5master2-vh', 'jlegind', 'jlegind', 'prod_h')
-# sql = 'SELECT specieskey FROM occurrence LIMIT 10'
 res = run_query(sql_snap_test, 'prod_h', 'jlegind', 'jlegind')
-# for j in res:
-#     print(j)
-print(res)
+
 
 with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
     field_names = ['datasetkey', 'pubkey']
