@@ -1,7 +1,6 @@
 """Makes the connection object and runs the query using the cursor
 Runs Python 3.6 """
 from impala.dbapi import connect
-# import thriftpy
 import csv
 
 #CLI parameters that can be included in bash chron job or other
@@ -55,8 +54,8 @@ def run_query(sql, db_name, user, pw):
 res = run_query(sql_snap_test, 'prod_h', 'jlegind', 'jlegind')
 
 
-with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
-    field_names = ['datasetkey', 'pubkey']
+with open('/home/jan/Documents/pytest/stats.csv', 'w', newline='', encoding='utf-8') as stats:
+    field_names = ['publisher_country', 'count_newest', 'count_beginning', 'delta']
     writer = csv.writer(stats, delimiter='\t')
     writer.writerow(field_names)
     writer.writerows(res)
