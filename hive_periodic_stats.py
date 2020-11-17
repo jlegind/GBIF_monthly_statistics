@@ -32,9 +32,15 @@ def make_hive_connection(db, user, pw):
     :return: HQL query gateway cursor
     '''
     conn_prod = connect(host='c5master2-vh',
+<<<<<<< HEAD
                            user='myUser',
                            database=db,
                            password='myPW',
+=======
+                           user='',
+                           database=db,
+                           password='',
+>>>>>>> 1b4f2ba5ccea9914584f357502585f7711067fcd
                            port=10000,
                            # authMechanism="NOSASL")
                            auth_mechanism="PLAIN"
@@ -52,12 +58,16 @@ def run_query(sql, db_name, user, pw):
     return cursor.fetchall()
 
 
+<<<<<<< HEAD
 # hive = make_connection("\t", 'c5master2-vh', 'myUser', 'myPW', 'prod_h')
 # sql = 'SELECT specieskey FROM occurrence LIMIT 10'
 res = run_query(sql_snap_test, 'prod_h', 'jlegind', 'jlegind')
 # for j in res:
 #     print(j)
 print(res)
+=======
+res = run_query(sql_snap_test, 'prod_h', 'myUser', 'myPW')
+>>>>>>> 1b4f2ba5ccea9914584f357502585f7711067fcd
 
 with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
     field_names = ['datasetkey', 'pubkey']
