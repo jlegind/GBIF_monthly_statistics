@@ -31,9 +31,9 @@ def make_hive_connection(db, user, pw):
     :return: HQL query gateway cursor
     '''
     conn_prod = connect(host='c5master2-vh',
-                           user='jlegind',
+                           user='',
                            database=db,
-                           password='jlegind',
+                           password='',
                            port=10000,
                            # authMechanism="NOSASL")
                            auth_mechanism="PLAIN"
