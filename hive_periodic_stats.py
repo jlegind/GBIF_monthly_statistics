@@ -1,6 +1,7 @@
 """Makes the connection object and runs the query using the cursor
 Runs Python 3.6 """
 from impala.dbapi import connect
+# import thriftpy
 import csv
 
 #CLI parameters that can be included in bash chron job or other
@@ -31,9 +32,9 @@ def make_hive_connection(db, user, pw):
     :return: HQL query gateway cursor
     '''
     conn_prod = connect(host='c5master2-vh',
-                           user='jlegind',
+                           user='myUser',
                            database=db,
-                           password='jlegind',
+                           password='myPW',
                            port=10000,
                            # authMechanism="NOSASL")
                            auth_mechanism="PLAIN"
@@ -51,11 +52,15 @@ def run_query(sql, db_name, user, pw):
     return cursor.fetchall()
 
 
+# hive = make_connection("\t", 'c5master2-vh', 'myUser', 'myPW', 'prod_h')
+# sql = 'SELECT specieskey FROM occurrence LIMIT 10'
 res = run_query(sql_snap_test, 'prod_h', 'jlegind', 'jlegind')
+# for j in res:
+#     print(j)
+print(res)
 
-
-with open('/home/jan/Documents/pytest/stats.csv', 'w', newline='', encoding='utf-8') as stats:
-    field_names = ['publisher_country', 'count_newest', 'count_beginning', 'delta']
+with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
+    field_names = ['datasetkey', 'pubkey']
     writer = csv.writer(stats, delimiter='\t')
     writer.writerow(field_names)
     writer.writerows(res)
