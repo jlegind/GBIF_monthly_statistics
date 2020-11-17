@@ -51,7 +51,7 @@ def run_query(sql, db_name, user, pw):
     return cursor.fetchall()
 
 
-res = run_query(sql_snap_test, 'prod_h', 'jlegind', 'jlegind')
+res = run_query(sql_snap_test, 'prod_h', 'myUser', 'myPW')
 
 
 with open('/home/jan/Documents/pytest/stats.csv', 'w', newline='', encoding='utf-8') as stats:
