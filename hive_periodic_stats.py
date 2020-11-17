@@ -1,7 +1,6 @@
 """Makes the connection object and runs the query using the cursor
 Runs Python 3.6 """
 from impala.dbapi import connect
-# import thriftpy
 import csv
 
 #CLI parameters that can be included in bash chron job or other
