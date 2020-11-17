@@ -51,9 +51,6 @@ def run_query(sql, db_name, user, pw):
     return cursor.fetchall()
 
 
-
-# hive = make_connection("\t", 'c5master2-vh', 'myUser', 'myPW', 'prod_h')
-# sql = 'SELECT specieskey FROM occurrence LIMIT 10'
 res = run_query(sql_snap_test, 'prod_h', 'myUser', 'myPW')
 # for j in res:
 #     print(j)
