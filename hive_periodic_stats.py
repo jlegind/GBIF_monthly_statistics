@@ -5,7 +5,7 @@ import csv
 
 #CLI parameters that can be included in bash chron job or other
 # start_date = sys.argv[1]
-# end_date = sys.argv[2]
+
 
 snapshot_yyyymmdd = '20201001'
 
