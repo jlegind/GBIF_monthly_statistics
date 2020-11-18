@@ -1,2 +1,4 @@
 *.pyc
 creds.py
+*.md
+.idea
