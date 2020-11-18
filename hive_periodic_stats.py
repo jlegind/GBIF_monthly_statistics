@@ -10,7 +10,7 @@ import csv
 snapshot_yyyymmdd = '20201001'
 
 #takes a yyyymmdd variable as the snapshot occurrence table
-sql_prod = '''SELECT t1.publishingcountry, t2.publisher_country, t1.ct as Nov11_count, t2.ct as beginning_year, t1.ct - t2.ct as delta FROM
+sql_prod = '''SELECT t1.publishingcountry, t1.ct as Nov11_count, t2.ct as beginning_year, t1.ct - t2.ct as delta FROM
 (
 SELECT count(o.gbifid) as ct, publishingcountry FROM prod_h.occurrence o
 GROUP BY publishingcountry
@@ -23,40 +23,31 @@ ON t1.publishingcountry = t2.publisher_country ORDER BY delta DESC'''.format(sna
 #{} in string is the variable placeholder for format()
 
 
-
-def make_hive_connection(db, user, pw):
+def make_hive_connection(db, a_user, pword):
     '''
     Make an object that queries HIVE
     :param db: string db name
     :return: HQL query gateway cursor
     '''
-    conn_prod = connect(host='c5master2-vh',
-                           user='myUser',
-                           database=db,
-                           password='myPW',
-                           port=10000,
-                           auth_mechanism="PLAIN"
-                   )
+    conn_prod = connect(host='c5master2-vh', user=a_user, database=db,
+                           password=pword, port=10000, auth_mechanism="PLAIN")
 
     return conn_prod.cursor()
 
-sql_snap_test = 'SELECT s.dataset_id, s.publisher_id FROM snapshot.occurrence_20201001 s LIMIT 10'
 
 def run_query(sql, db_name, user, pw):
-
-    cursor = make_hive_connection(db_name, user, pw)
+    print(sql)
+    cursor = make_hive_connection(db_name, a_user=user, pword=pw)
     cursor.execute(sql)
-    # Fetch table results
     return cursor.fetchall()
 
 
-res = run_query(sql_snap_test, 'prod_h', 'myUser', 'myPW')
+res = run_query(sql_prod, 'prod_h', 'usr', 'pw')
 # for j in res:
 #     print(j)
 
-
 with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
-    field_names = ['datasetkey', 'pubkey']
+    field_names = ['publisher_country',	'count_newest',	'count_beginning_of_year', 'delta']
     writer = csv.writer(stats, delimiter='\t')
     writer.writerow(field_names)
     writer.writerows(res)
