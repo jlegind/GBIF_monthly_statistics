@@ -1,10 +1,10 @@
 """Makes the connection object and runs the query using the cursor
 Runs Python 3.6
 Is a proof-of-concept minimum implementation with a simple SQL statement
-Please uncomment the sql_prod string to test more complex query"""
+"""
 from impala.dbapi import connect
 
-#CLI parameters that can be included in bash chron job or other
+#Below is CLI parameter that can be included in bash chron job or other
 # start_date = sys.argv[1]
 
 
