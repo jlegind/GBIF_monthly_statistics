@@ -14,8 +14,8 @@ from impala.dbapi import connect
 snapshot_yyyymmdd = '20201001'
 
 
-connection = connect(host='c5master2-vh',user='jlegind',
-                       database='prod_h', password='jlegind',
+connection = connect(host='c5master2-vh',user='myUser',
+                       database='prod_h', password='myPW',
                        port=10000, auth_mechanism="PLAIN"
                     )
 cursor = connection.cursor()
