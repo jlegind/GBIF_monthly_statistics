@@ -35,16 +35,13 @@ def make_hive_connection(db, a_user, pword):
     return conn_prod.cursor()
 
 
-def run_query(sql, db_name, user, pw):
-    print(sql)
+def run_query(sql, db_name, user, pw):    
     cursor = make_hive_connection(db_name, a_user=user, pword=pw)
     cursor.execute(sql)
     return cursor.fetchall()
 
 
 res = run_query(sql_prod, 'prod_h', 'usr', 'pw')
-# for j in res:
-#     print(j)
 
 with open('stats.csv', 'w', newline='', encoding='utf-8') as stats:
     field_names = ['publisher_country',	'count_newest',	'count_beginning_of_year', 'delta']
