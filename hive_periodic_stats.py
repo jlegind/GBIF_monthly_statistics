@@ -20,7 +20,7 @@ JOIN
 SELECT count(id) as ct, publisher_country FROM snapshot.occurrence_{}
 GROUP BY publisher_country)t2
 ON t1.publishingcountry = t2.publisher_country ORDER BY delta DESC'''.format(snapshot_yyyymmdd)
-#{} in string is the variable placeholder for format()
+#{} in the SQL string is the variable placeholder for format()
 
 
 def make_hive_connection(db, a_user, pword):
