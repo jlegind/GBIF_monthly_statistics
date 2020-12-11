@@ -9,7 +9,7 @@ import csv
 
 snapshot_yyyymmdd = '20201001'
 
-#takes a yyyymmdd variable as the snapshot occurrence table
+#takes a yyyymmdd variable as the snapshot occurrence table in the format() clause
 sql_prod = '''SELECT t1.publishingcountry, t1.ct as Nov11_count, t2.ct as beginning_year, t1.ct - t2.ct as delta FROM
 (
 SELECT count(o.gbifid) as ct, publishingcountry FROM prod_h.occurrence o
